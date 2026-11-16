@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Implement serial UART communication channel with buffered transmission, framing for messages, and error detection with checksum.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00014-serial-uart-channel-implementation",
+  "RecordId": 14,
+  "Title": "Serial UART Channel Implementation"
+}

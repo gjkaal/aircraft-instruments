@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Create developer documentation with API documentation using Doxygen, architecture documentation, contribution guidelines, and code examples.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00024-developer-documentation",
+  "RecordId": 24,
+  "Title": "Developer Documentation"
+}

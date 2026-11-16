@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Deploy and test on actual Raspberry Pi hardware with cross-compilation, real sensors, CAN transceiver, timing performance validation, and resource usage measurement.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00022-raspberry-pi-hardware-testing",
+  "RecordId": 22,
+  "Title": "Raspberry Pi Hardware Testing"
+}

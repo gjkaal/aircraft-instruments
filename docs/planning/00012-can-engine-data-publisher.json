@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Implement CAN-Bus publisher for engine data with message formatting, CAN ID construction, periodic transmission scheduling, and retry logic.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00012-can-engine-data-publisher",
+  "RecordId": 12,
+  "Title": "CAN Engine Data Publisher"
+}

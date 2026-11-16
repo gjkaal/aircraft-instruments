@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Define fundamental types, enums, and constants used throughout the system including SensorType, AlarmLevel, ChannelType, and DataType enums.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00002-core-type-definitions-and-enums",
+  "RecordId": 2,
+  "Title": "Core Type Definitions and Enums"
+}

@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Set up the complete development environment and build infrastructure for the Raspberry Pi Engine Monitoring System. Priority: High, Phase: 1, Duration: 2-4 hours",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00001-project-setup-and-build-system",
+  "RecordId": 1,
+  "Title": "Project Setup and Build System"
+}

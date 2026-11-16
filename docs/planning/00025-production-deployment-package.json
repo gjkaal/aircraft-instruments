@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Create production deployment package with systemd service file, auto-start on boot, deployment script, configuration templates, and backup/restore procedures.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00025-production-deployment-package",
+  "RecordId": 25,
+  "Title": "Production Deployment Package"
+}

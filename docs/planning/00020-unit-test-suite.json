@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Complete comprehensive unit test coverage with Google Test framework for sensor, processing pipeline, CAN interface, and channel tests achieving \u003E80% code coverage.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00020-unit-test-suite",
+  "RecordId": 20,
+  "Title": "Unit Test Suite"
+}

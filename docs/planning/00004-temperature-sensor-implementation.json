@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Implement temperature sensor support for EGT and CHT measurements with thermocouple linearization, cold junction compensation, and calibration coefficient support.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00004-temperature-sensor-implementation",
+  "RecordId": 4,
+  "Title": "Temperature Sensor Implementation"
+}

@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Implement lock-free SPSC ring buffer for sensor data transfer using atomic operations for thread safety with overflow detection and wait-free push/pop operations.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00007-lock-free-ring-buffer-implementation",
+  "RecordId": 7,
+  "Title": "Lock-Free Ring Buffer Implementation"
+}

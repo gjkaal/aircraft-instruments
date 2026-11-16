@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Create comprehensive user documentation including installation guide, configuration options, wiring diagrams, troubleshooting guide, and calibration procedures.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00023-user-documentation",
+  "RecordId": 23,
+  "Title": "User Documentation"
+}

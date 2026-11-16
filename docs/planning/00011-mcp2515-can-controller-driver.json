@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Implement MCP2515 CAN controller driver via SPI with initialization sequence, frame transmission/reception, bus-off recovery logic, and error flag monitoring.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00011-mcp2515-can-controller-driver",
+  "RecordId": 11,
+  "Title": "MCP2515 CAN Controller Driver"
+}

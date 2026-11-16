@@ -1,0 +1,13 @@
+{
+  "Status": "New",
+  "Logs": [],
+  "TemplateType": "Ad",
+  "Context": "Wire type, gauge, shielding and routing rules for engine monitor power, CAN-Bus, sensors (thermocouples, thermistors, RPM/magneto) and coexistence with radio equipment, based on FAA AC 43.13-1B chapter 11 and the ModAir project.",
+  "References": {},
+  "RelatedTasks": {},
+  "SyncLinks": [],
+  "DateTime": "2026-11-16T00:00:00+01:00",
+  "FileName": "00008-aircraft-wiring-and-wire-gauge-guidelines",
+  "RecordId": 8,
+  "Title": "Aircraft Wiring and Wire Gauge Guidelines"
+}

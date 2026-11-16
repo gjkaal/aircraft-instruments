@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Implement the data acquisition thread with timer-based sampling, sensor registration mechanism, POSIX timer-based scheduling, and integration with SPSCRingBuffer.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00008-data-acquisition-engine",
+  "RecordId": 8,
+  "Title": "Data Acquisition Engine"
+}

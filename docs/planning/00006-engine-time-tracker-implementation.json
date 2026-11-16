@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Implement engine hours tracking with persistent storage, time accumulation logic, atomic writes to prevent corruption, and rollover protection.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00006-engine-time-tracker-implementation",
+  "RecordId": 6,
+  "Title": "Engine Time Tracker Implementation"
+}

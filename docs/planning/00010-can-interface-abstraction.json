@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Create abstract interface for CAN-Bus communication with ICanInterface class, CanFrame structure, CanEngineData structure, and CAN ID encoding/decoding.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00010-can-interface-abstraction",
+  "RecordId": 10,
+  "Title": "CAN Interface Abstraction"
+}

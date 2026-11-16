@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Implement EngineDataPublisher for multi-channel distribution with channel registration, thread-safe management, asynchronous distribution, and backpressure handling.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00017-publisher-subscriber-hub",
+  "RecordId": 17,
+  "Title": "Publisher-Subscriber Hub"
+}

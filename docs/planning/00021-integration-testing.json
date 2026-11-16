@@ -1,0 +1,11 @@
+{
+  "DueDate": "0001-01-01T00:00:00",
+  "Status": "New",
+  "Description": "Test complete system with simulated inputs including sensor simulators, test harness for end-to-end testing, CAN output validation, and failure scenarios.",
+  "Related": {},
+  "Logs": [],
+  "DateTime": "2025-10-07T00:00:00+02:00",
+  "FileName": "00021-integration-testing",
+  "RecordId": 21,
+  "Title": "Integration Testing"
+}
