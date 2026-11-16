@@ -1,0 +1,13 @@
+{
+  "Status": "New",
+  "Logs": [],
+  "TemplateType": "Ad",
+  "Context": "Reference Mermaid wiring diagrams and wire list with numbered wires: Arduino engine monitor with sensors and CAN-Bus, magnetos and ignition switches, Trig TY91/TC90 VHF with dual headsets, Trig TT21/TT22/TC20 transponder with GPS, master, COMMS and ENGINE/ELEC switches; gauges per ADR-0008 and Trig manuals.",
+  "References": {},
+  "RelatedTasks": {},
+  "SyncLinks": [],
+  "DateTime": "2026-11-16T00:00:00+01:00",
+  "FileName": "00009-reference-wiring-diagram-for-generic-panel-setup",
+  "RecordId": 9,
+  "Title": "Reference Wiring Diagram for Generic Panel Setup"
+}

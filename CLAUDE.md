@@ -106,6 +106,7 @@ Critical ADRs documenting key design decisions in `docs/adr/`:
 - **ADR-0005**: Data collection pipeline (lock-free buffers, threading model)
 - **ADR-0006**: Communication channel abstraction (publisher-subscriber)
 - **ADR-0008**: Aircraft wiring and wire gauge guidelines (power, CAN-Bus, sensors, radios)
+- **ADR-0009**: Reference wiring diagram (Mermaid) for engine monitor, VHF, transponder, dual headset
 
 When implementing features, consult relevant ADRs for design rationale and constraints.
 

@@ -285,8 +285,9 @@ The engine monitor does not wire radios, but must coexist with them:
   bay; no more than needed.
 - Use proper ratcheting crimp tools for the contact type; no solder-only
   terminals in vibration areas.
-- Label each wire (circuit/wire number) at both ends; record in the wiring
-  diagram.
+- Label each wire with its wire number at both ends, using the numbering
+  system of ADR-0009 (1xx engine, 2xx comms, 3xx power/ground); record it
+  in the wire list.
 - Firewall penetrations through fire-rated grommets / pass-throughs.
 
 ## Consequences

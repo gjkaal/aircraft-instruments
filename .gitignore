@@ -11,3 +11,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 build
+
+# Third-party installation manuals (copyrighted, download from vendor; see ADR-0009)
+docs/manuals/
