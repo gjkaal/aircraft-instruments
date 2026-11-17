@@ -413,6 +413,157 @@ Notes:
 - The Trig TMAP bus (RS-485 based, VHF and transponder controllers) is a
   separate, point-to-point Trig link; it is not connected to the CAN-Bus.
 
+#### Engine monitor connector pin-out
+
+The engine monitor uses MIL-C-24308 (MIL-DTL-24308) D-sub connectors with
+crimp contacts, the same family as the Trig equipment. One crimp tool
+(M22520/2-01 with M22520/2-08 positioner) and one socket contact
+(M39029/63-368, 20-24 AWG) cover the whole panel.
+
+| Connector | Type                  | Function                         |
+| --------- | --------------------- | -------------------------------- |
+| J1        | DB-25 (25-way)        | Thermocouples (EGT, CHT)         |
+| J2        | DA-15 (15-way)        | Power, analog senders, RPM       |
+| J3        | DE-9 (9-way)          | CAN-Bus port 1                   |
+| J4        | DE-9 (9-way)          | CAN-Bus port 2 (parallel to J3)  |
+
+Conventions:
+- The unit has male (pin) connectors; the harness has female (socket)
+  connectors, so no live pins are exposed on a disconnected harness.
+- All connectors are secured with jackscrews (ADR-0008: locking connectors).
+- Each connector has a different size, so harness plugs cannot be swapped
+  between J1, J2 and J3/J4. J3 and J4 are electrically identical.
+- Pin numbers as marked on the connector; viewed from the wiring side of the
+  harness plug, pin 1 is top right.
+
+Connector selection - options considered:
+
+| Option                                   | Pro                                              | Con                                          |
+| ---------------------------------------- | ------------------------------------------------ | -------------------------------------------- |
+| MIL-DTL-24308 D-sub, crimp (chosen)      | Same contacts and crimp tool as Trig TY91/TC90/TT21/TC20; cheap; widely available; contacts individually replaceable | Not sealed; moderate vibration resistance; cabin side of firewall only |
+| Circular MIL-DTL-38999 or Deutsch DT/DTM | Sealed, keyed, very good vibration resistance; suitable for firewall-forward mounting | More expensive; different contacts and crimp tool; larger panel footprint |
+| Thermocouple-alloy connectors for J1     | No copper in the thermocouple path at all       | Bulky and expensive for 8+ channels; separate connector per probe or special multi-pin blocks |
+
+D-sub is chosen because the engine monitor is mounted behind the panel (cabin
+side, like the Trig units), and sharing one contact type and tool with the
+radio and transponder harnesses keeps installation simple. If the unit is ever
+moved firewall-forward, the connectors change to sealed circulars; the pin
+assignment by function (J1 thermocouples, J2 power/senders/RPM, J3/J4 CAN)
+remains.
+
+Pin location rationale:
+- Thermocouples are on their own connector (J1) so J1 can be placed on the
+  converter board and kept isothermal with the cold-junction sensors; mixing
+  them with power pins would bring current-heated contacts next to them.
+- Each thermocouple pair uses vertically adjacent pins (+ on the top row,
+  - directly below), so both K/Cu transitions of a pair are at the same
+  temperature and the pair is easy to check by eye.
+- EGT on TC1-4 and CHT on TC5-8 follows wire numbers 121-128 in order, so
+  wire number, channel and pin increase together.
+- Power (J2-1, J2-2) and sensor ground (J2-3) are separate pins at the start
+  of J2, keeping supply current out of the analog reference.
+- Each sender keeps its conductors on consecutive pins (oil pressure 5-7 with
+  shield on 9, RPM 10-12), so a cable's conductors are not spread over the
+  connector.
+- The P-lead tap (J2-15) is in a corner with its neighbours (J2-8, J2-14)
+  left empty, giving creepage distance for several-hundred-volt pulses and
+  preventing a pin-to-pin short from grounding the P-lead or injecting high
+  voltage into a neighbouring input.
+- CAN uses the standard CiA 303-1 DE-9 pin-out, so off-the-shelf CAN cables,
+  adapters and bus analysers plug in directly for troubleshooting.
+- Spare and reserved pins are at the end of each pin range, so growth (TC9-10,
+  extra analog input) does not move existing pins and harnesses stay valid.
+
+**J1 - Thermocouples (DB-25)**
+
+Each thermocouple has + on the top row and - directly below it on the bottom
+row, so a pair always sits on adjacent pins.
+
+| Pin | Signal       | Wire  | Pin | Signal       | Wire  |
+| --- | ------------ | ----- | --- | ------------ | ----- |
+| 1   | TC1 + EGT 1  | 121A  | 14  | TC1 - EGT 1  | 121B  |
+| 2   | TC2 + EGT 2  | 122A  | 15  | TC2 - EGT 2  | 122B  |
+| 3   | TC3 + EGT 3  | 123A  | 16  | TC3 - EGT 3  | 123B  |
+| 4   | TC4 + EGT 4  | 124A  | 17  | TC4 - EGT 4  | 124B  |
+| 5   | TC5 + CHT 1  | 125A  | 18  | TC5 - CHT 1  | 125B  |
+| 6   | TC6 + CHT 2  | 126A  | 19  | TC6 - CHT 2  | 126B  |
+| 7   | TC7 + CHT 3  | 127A  | 20  | TC7 - CHT 3  | 127B  |
+| 8   | TC8 + CHT 4  | 128A  | 21  | TC8 - CHT 4  | 128B  |
+| 9   | Reserved TC9 +  | -  | 22  | Reserved TC9 -  | -  |
+| 10  | Reserved TC10 + | -  | 23  | Reserved TC10 - | -  |
+| 11  | Reserved     | -     | 24  | Reserved     | -     |
+| 12  | Reserved     | -     | 25  | Reserved     | -     |
+| 13  | Reserved     | -     |     |              |       |
+
+- Thermocouple wire runs directly into J1 (stranded type K extension wire,
+  no copper in between). The copper D-sub contacts form the K/Cu transition;
+  both contacts of a pair are at the same temperature, so the errors cancel
+  provided J1 is isothermal with the cold-junction sensors. J1 is therefore
+  mounted on the same board as the MAX31855 converters, close to them and
+  away from the DC-DC converter and other heat sources.
+- Reserved TC9/TC10 allow 6-cylinder engines (or EGT/CHT 5-6) without a
+  connector change; a 6-cylinder variant renumbers per the allocation table.
+- Thermocouple inputs are floating (no ground on J1); MAX31855 inputs must
+  not be grounded externally. Grounded-junction probes are not supported.
+
+**J2 - Power, senders and RPM (DA-15)**
+
+| Pin | Signal                         | Wire  | Notes                                   |
+| --- | ------------------------------ | ----- | --------------------------------------- |
+| 1   | +14 V power in                 | 101   | From ENGINE/ELEC bus, CB 3A             |
+| 2   | Power ground                   | 102   | To panel ground bus                     |
+| 3   | Sensor ground                  | 161   | From engine case ground point           |
+| 4   | Oil temperature in (NTC)       | 141   | Internal pull-up; return via pin 3      |
+| 5   | Sender excitation +5 V out     | 142A  | Current limited, shared with pin 13     |
+| 6   | Oil pressure signal in         | 142B  | 0-5 V                                   |
+| 7   | Oil pressure sender return     | 142C  | Analog ground                           |
+| 8   | NC - keep empty                | -     | HV clearance for pin 15                 |
+| 9   | Oil pressure shield            | 142S  | Grounded at monitor end only            |
+| 10  | RPM signal in (pickup)         | 151A  | Hall / VR / Rotax trigger               |
+| 11  | RPM return                     | 151B  |                                         |
+| 12  | RPM shield                     | 151S  | Grounded at monitor end only            |
+| 13  | Spare analog in (0-5 V)        | -     | Fuel pressure, fuel level, MAP, ...     |
+| 14  | NC - keep empty                | -     | HV clearance for pin 15                 |
+| 15  | RPM P-lead tap in (isolated)   | 152   | Alternative to 151; see section 4       |
+
+- Power (pins 1, 2) and sensor ground (pin 3) are separate pins: 102 carries
+  supply current, 161 only carries sender return current, so the analog
+  reference is not shifted by supply current (ADR-0008 section 5).
+- Pins 8 and 14 are left empty around pin 15 because P-lead pulses reach
+  several hundred volts. Pin 15 enters a protected, isolated input (series
+  resistor, clamp, opto/transformer) directly behind the connector. Use either
+  151 (pins 10-12) or 152 (pin 15), not both.
+- Shields 142S and 151S are connected to the sensor ground inside the unit;
+  at the sender/pickup end they are trimmed and insulated.
+
+**J3 / J4 - CAN-Bus (DE-9, CiA 303-1 pin-out)**
+
+J3 and J4 are wired in parallel inside the unit, so the bus can pass through
+the engine monitor (in on J3, out on J4). At a bus end only one is used.
+
+| Pin | Signal          | Wire  | Notes                                       |
+| --- | --------------- | ----- | ------------------------------------------- |
+| 1   | Reserved        | -     |                                             |
+| 2   | CAN-L           | 17xB  |                                             |
+| 3   | CAN-GND         | 17xC  | Transceiver ground reference                |
+| 4   | Reserved        | -     |                                             |
+| 5   | CAN shield      | 17xS  | J3-5 and J4-5 joined; to ground only via JP2 |
+| 6   | Reserved        | -     | (CiA optional GND, not used)                |
+| 7   | CAN-H           | 17xA  |                                             |
+| 8   | Reserved        | -     |                                             |
+| 9   | Reserved        | -     | (CiA optional V+, not used: unit has own power on J2) |
+
+`17x` = the CAN segment wire connected to that port (171 in this reference
+setup, which uses J4 only; a pass-through installation uses 17n on J3 and
+17n+1 on J4).
+
+Jumpers:
+- JP1 - CAN termination 120 ohm between CAN-H and CAN-L. ON only when the
+  engine monitor is at a physical end of the bus (as in this reference setup).
+- JP2 - CAN shield to ground. ON only on the single node chosen as the shield
+  ground point (ADR-0008 section 4). Default OFF: shield passes through J3/J4
+  without being grounded.
+
 ### 6. VHF radio: Trig TY91 + TC90
 
 TY91 connector: 25-way D-sub (Trig 5.5.1). TC90 connector: 15-way D-sub
@@ -654,18 +805,18 @@ TC20 interconnect 241 (Trig 5.10):
 
 | Wire | From                     | To                         | Cable / gauge                      | Protection |
 | ---- | ------------------------ | -------------------------- | ---------------------------------- | ---------- |
-| 101  | ENGINE/ELEC bus CB       | Engine monitor +14V        | 22759/16, 20 AWG                   | CB 3A      |
-| 102  | Engine monitor GND       | Panel ground bus           | 22759/16, 20 AWG                   | -          |
+| 101  | ENGINE/ELEC bus CB       | Engine monitor J2-1        | 22759/16, 20 AWG                   | CB 3A      |
+| 102  | Engine monitor J2-2      | Panel ground bus           | 22759/16, 20 AWG                   | -          |
 | 111  | ENGINE/ELEC bus CB       | Display +14V               | 22759/16, 20 AWG                   | CB 3A      |
 | 112  | Display GND              | Panel ground bus           | 22759/16, 20 AWG                   | -          |
-| 121-124 | EGT probe 1-4         | Engine monitor TC in 1-4   | Type K ext., 20 AWG, A=+ B=-       | -          |
-| 125-128 | CHT probe 1-4         | Engine monitor TC in 5-8   | Type K ext., 20 AWG, A=+ B=-       | -          |
-| 141  | Oil temp sender          | Engine monitor analog in   | 22759/16, 22 AWG                   | -          |
-| 142  | Oil pressure sender      | Engine monitor analog in   | M27500 3-cond. shielded, 22 AWG    | -          |
-| 151  | RPM pickup               | Engine monitor RPM in      | M27500 STP, 22 AWG                 | -          |
-| 152  | P-lead 181A (sealed splice) | Engine monitor isolated RPM in | 22759/16, 22 AWG (alternative to 151) | In monitor input |
-| 161  | Engine case ground point | Engine monitor sensor GND  | 22759/16, 18-20 AWG                | -          |
-| 171  | Engine monitor CAN       | CAN node (or display)      | 120 ohm STP + gnd, 22-24 AWG       | -          |
+| 121-124 | EGT probe 1-4         | J1-1..4 (+), J1-14..17 (-) | Type K ext., 20 AWG, A=+ B=-       | -          |
+| 125-128 | CHT probe 1-4         | J1-5..8 (+), J1-18..21 (-) | Type K ext., 20 AWG, A=+ B=-       | -          |
+| 141  | Oil temp sender          | Engine monitor J2-4        | 22759/16, 22 AWG                   | -          |
+| 142  | Oil pressure sender      | J2-5 (A), 6 (B), 7 (C), 9 (S) | M27500 3-cond. shielded, 22 AWG    | -          |
+| 151  | RPM pickup               | J2-10 (A), 11 (B), 12 (S)  | M27500 STP, 22 AWG                 | -          |
+| 152  | P-lead 181A (sealed splice) | Engine monitor J2-15 (isolated) | 22759/16, 22 AWG (alternative to 151) | In monitor input |
+| 161  | Engine case ground point | Engine monitor J2-3        | 22759/16, 18-20 AWG                | -          |
+| 171  | Engine monitor J4 (7,2,3,5) | CAN node (or display)   | 120 ohm STP + gnd, 22-24 AWG       | -          |
 | 172  | CAN node                 | Display CAN                | 120 ohm STP + gnd, 22-24 AWG       | -          |
 | 181  | Left magneto P-lead      | MAG L switch               | Shielded 18-20 AWG, S at magneto   | -          |
 | 182  | Right magneto P-lead     | MAG R switch               | Shielded 18-20 AWG, S at magneto   | -          |
@@ -732,8 +883,14 @@ the reserved groups 4xx and 6xx when added.
   (TY91/TY92 issue AH, TT21/TT22 issue AQ). A newer manual issue must be
   checked against this ADR before wiring.
 - Mermaid flowcharts are block diagrams; the pin tables carry the detail.
-  The engine monitor connector pin-out still needs its own table once the
-  hardware revision is fixed.
+- The engine monitor pin-out (J1-J4) fixes requirements on the hardware
+  design: J1 isothermal with the thermocouple converters, floating
+  thermocouple inputs, separate power and sensor grounds, HV clearance and
+  isolation for the P-lead input, parallel CAN ports with termination and
+  shield jumpers. Changing the pin-out later means rebuilding harnesses, so
+  it must be settled before the first PCB revision.
+- D-sub connectors are not sealed; the unit is mounted on the cabin side of
+  the firewall. Engine-bay connectors (probes, senders) are separate.
 - The Arduino variant differs from the Raspberry Pi platform chosen in
   ADR-0001. This ADR only covers wiring, which is the same for both.
 
@@ -746,5 +903,6 @@ the reserved groups 4xx and 6xx when added.
   damages the controller.
 
 **Follow-up**
-- Add the engine monitor connector pin-out table, referencing wire numbers.
+- Feed the J1-J4 pin-out and jumpers JP1/JP2 into the engine monitor
+  hardware design (ADR-0003 sensor interface, ADR-0004 CAN interface).
 - Reference this ADR and ADR-0008 from the installation manual (task 00023).
